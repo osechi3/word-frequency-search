@@ -4,11 +4,21 @@
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta charset="utf-8">
-    <title></title>
+    <title>Word Frequency Search</title>
   </head>
   <body>
-    <div id="app">
-      Hello world
-    </div>
+    <header class="header">
+      <h1 class="header__title">Word Frequency Search</h1>
+      <p class="header__subtitle">Macmillan, Longman, Collins, Cambridge</p>
+    </header>
+    <main>
+      <section class="search">
+        <input class="search__input" type="text" placeholder="Enter your word">
+        <button class="search__search-btn" type="button">Search</button>
+      </section>
+      <section class="output-section">
+        <ul class="output-section__list"></ul>
+      </section>
+    </main>
   </body>
 </html>

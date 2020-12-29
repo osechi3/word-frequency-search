@@ -1,5 +1,36 @@
 @use 'base-styling';
 
-#app {
-  background-color: green;
+.header {
+  margin-top: 50px;
+
+  font-size: 1.6rem;
+  text-align: center;
+
+  .header__subtitle {
+    color: #444;
+  }
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 30px;
+
+  .search__input {
+    width: 30%;
+    height: 30px;
+
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .search__search-btn {
+    width: 8%;
+    height: 30px;
+    margin: 12px;
+
+    font-size: 1.4rem;
+  }
 }
