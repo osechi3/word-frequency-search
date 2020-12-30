@@ -36,6 +36,8 @@
     margin: 10px 0;
   }
 
+  .entry__frequency_not-found { display: none; }
+
   .entry__frequency-icon {
     width: 18px;
     height: 18px;
@@ -68,6 +70,8 @@
       color: #fff;
     }
   }
+
+  .entry__dictionary-link_not-found { display: none; }
 }
 
 .entry_hidden {

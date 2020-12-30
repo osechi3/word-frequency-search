@@ -11,6 +11,7 @@ class App {
   constructor () {
     this.searchInput = document.querySelector('.search__input')
     this.searchButton = document.querySelector('.search__search-btn')
+    this.entries = document.querySelectorAll('.entry')
 
     this.initListeners()
   }
@@ -24,8 +25,9 @@ class App {
       console.log(window.innerWidth)
     })
 
-    PubSub.subscribe('frequency_found', (msg, frequency) => {
-      this.displayFrequency(frequency)
+    PubSub.subscribe('frequency_found', (msg, frequencies) => {
+      this.resetEntries()
+      this.displayFrequency(frequencies)
     })
   }
 
@@ -37,12 +39,12 @@ class App {
     getFrequencyCambridge(this.searchInput.value)
     this.searchInput.value = ''
 
-    PubSub.publish('frequency_found', {
-      macmillan,
-      longman: '',
-      collins: '',
-      cambridge: ''
-    })
+    PubSub.publish('frequency_found', [
+      macmillan
+      // longman: '',
+      // collins: '',
+      // cambridge: ''
+    ])
   }
 
   searchWithEnter (e) {
@@ -51,26 +53,51 @@ class App {
     }
   }
 
-  displayFrequency (frequencyObject) {
-    // eslint-disable-next-line no-unused-vars
-    const { macmillan, longman, collins, cambridge } = frequencyObject
+  displayFrequency (frequencies) {
+    frequencies.forEach(frequency => {
+      const entry = document.querySelector(`.${frequency.name}`)
+      entry.classList.remove('entry_hidden')
 
-    const macmillanEntry = document.querySelector('.macmillan')
-    macmillanEntry.classList.remove('entry_hidden')
+      const entryExplanation =
+        entry.querySelector('.entry__frequency-explanation')
+      entryExplanation.textContent = frequency.explanation
 
-    const frequencyIcons = macmillanEntry.querySelectorAll('.entry__frequency-icon')
-    frequencyIcons.forEach((icon, i) => {
-      if (i < macmillan.amount) {
-        icon.classList.add('entry__frequency-icon_toggled')
+      const wordLink = entry.querySelector('.entry__dictionary-link')
+
+      if (frequency.notFound) {
+        const entryFrequency = entry.querySelector('.entry__frequency')
+        entryFrequency.classList.add('entry__frequency_not-found')
+        wordLink.classList.add('entry__dictionary-link_not-found')
+        return
       }
+
+      const frequencyIcons = entry.querySelectorAll('.entry__frequency-icon')
+      frequencyIcons.forEach((icon, i) => {
+        if (i < frequency.amount) {
+          icon.classList.add('entry__frequency-icon_toggled')
+        }
+      })
+
+      wordLink.href = frequency.url
+      wordLink.textContent = frequency.word
     })
+  }
 
-    const entryExplanation =
-      macmillanEntry.querySelector('.entry__frequency-explanation')
-    entryExplanation.textContent = macmillan.explanation
+  resetEntries () {
+    this.entries.forEach(entry => {
+      entry.classList.add('entry_hidden')
 
-    const wordLink = macmillanEntry.querySelector('.entry__dictionary-link')
-    wordLink.href = macmillan.url
+      const frequencyIcons = entry.querySelectorAll('.entry__frequency-icon')
+      frequencyIcons.forEach(icon => {
+        icon.classList.remove('entry__frequency-icon_toggled')
+      })
+
+      const entryFrequency = entry.querySelector('.entry__frequency')
+      entryFrequency.classList.remove('entry__frequency_not-found')
+
+      const wordLink = entry.querySelector('.entry__dictionary-link')
+      wordLink.classList.remove('entry__dictionary-link_not-found')
+    })
   }
 }
 
