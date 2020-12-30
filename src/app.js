@@ -56,6 +56,7 @@ class App {
     const { macmillan, longman, collins, cambridge } = frequencyObject
 
     const macmillanEntry = document.querySelector('.macmillan')
+    macmillanEntry.classList.remove('entry_hidden')
 
     const frequencyIcons = macmillanEntry.querySelectorAll('.entry__frequency-icon')
     frequencyIcons.forEach((icon, i) => {
