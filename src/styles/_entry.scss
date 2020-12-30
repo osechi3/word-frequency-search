@@ -21,6 +21,12 @@
     background-color: v.$red1;
   }
 
+  .entry__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .entry__frequency {
     display: flex;
     justify-content: center;
@@ -48,5 +54,16 @@
 
     font-size: 1.35rem;
     text-align: center;
+  }
+
+  .entry__dictionary-link {
+    margin-bottom: 3px;
+
+    color: v.$red1;
+    font-size: 1.15rem;
+
+    &:hover {
+      color: #fff;
+    }
   }
 }
