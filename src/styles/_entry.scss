@@ -11,6 +11,8 @@
   border-radius: 8px;
   box-shadow: 0 2px 1px 1px v.$red2;
 
+  transition: opacity .2s ease-in;
+
   .entry__title {
     margin: 0;
     padding: 3px 0;
