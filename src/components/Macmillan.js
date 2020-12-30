@@ -13,6 +13,16 @@ export default function getFrequencyMacmillan (word, english = 'american') {
       }
 
       console.log(`Macmillan: ${stars.length}/3`)
-      return stars.length
+      return {
+        amount: stars.length,
+        explanation: explanations['star' + stars.length],
+        url
+      }
     })
+}
+
+const explanations = {
+  star1: 'Among 2500 of the most common words.',
+  star2: 'Among 5000 of the most common words.',
+  star3: 'Among 7500 of the most common words.'
 }
