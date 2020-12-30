@@ -1,0 +1,52 @@
+@use 'variables' as v;
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  color: #fff;
+
+  border: 1px solid v.$black;
+  border-radius: 8px;
+  box-shadow: 0 2px 1px 1px v.$red2;
+
+  .entry__title {
+    margin: 0;
+    padding: 3px 0;
+
+    font-size: 1.5rem;
+    text-align: center;
+
+    background-color: v.$red1;
+  }
+
+  .entry__frequency {
+    display: flex;
+    justify-content: center;
+
+    margin: 10px 0;
+  }
+
+  .entry__frequency-icon {
+    width: 18px;
+    height: 18px;
+    margin: 0 2px;
+
+    background-color: v.$gray;
+    border: 2px solid v.$gray;
+    border-radius: 50%;
+  }
+
+  .entry__frequency-icon_toggled {
+    background-color: v.$red2;
+    border-color: v.$red2;
+  }
+
+  .entry__frequency-explanation {
+    margin: 10px 0;
+
+    font-size: 1.35rem;
+    text-align: center;
+  }
+}

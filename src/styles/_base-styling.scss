@@ -1,3 +1,5 @@
+@use 'variables' as v;
+
 html {
   box-sizing: border-box;
 
@@ -9,3 +11,5 @@ html {
 *::after {
   box-sizing: inherit;
 }
+
+body { background-color: v.$black; }
