@@ -12,6 +12,11 @@ const searchButton = document.querySelector('.search__search-btn')
 searchInput.addEventListener('keyup', searchWithEnter.bind(this))
 searchButton.addEventListener('click', search)
 
+// DELETE
+window.addEventListener('resize', () => {
+  console.log(window.innerWidth)
+})
+
 function search () {
   getFrequencyMacmillan(searchInput.value)
   getFrequencyLongman(searchInput.value)
