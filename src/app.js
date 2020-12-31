@@ -5,7 +5,6 @@ import PubSub from 'pubsub-js'
 import getFrequencyMacmillan from './components/Macmillan'
 import getFrequencyLongman from './components/Longman'
 import getFrequencyCollins from './components/Collins'
-import getFrequencyCambridge from './components/Cambridge'
 
 class App {
   constructor () {
@@ -37,14 +36,12 @@ class App {
     const macmillan = await getFrequencyMacmillan(userInput)
     const longman = await getFrequencyLongman(userInput)
 
-    getFrequencyCambridge(this.searchInput.value)
     this.searchInput.value = ''
 
     PubSub.publish('frequency_found', [
       collins,
       macmillan,
       longman
-      // cambridge: ''
     ])
   }
 
