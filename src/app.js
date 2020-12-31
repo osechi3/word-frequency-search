@@ -32,17 +32,17 @@ class App {
   }
 
   async search () {
+    const collins = await getFrequencyCollins(this.searchInput.value)
     const macmillan = await getFrequencyMacmillan(this.searchInput.value)
     const longman = await getFrequencyLongman(this.searchInput.value)
 
-    getFrequencyCollins(this.searchInput.value)
     getFrequencyCambridge(this.searchInput.value)
     this.searchInput.value = ''
 
     PubSub.publish('frequency_found', [
+      collins,
       macmillan,
       longman
-      // collins: '',
       // cambridge: ''
     ])
   }
