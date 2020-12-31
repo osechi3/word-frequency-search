@@ -17,7 +17,8 @@ export default function getFrequencyLongman (word) {
         notFound: false
       }
 
-      if (/Did you mean:/.test(response.data)) {
+      if (/Did you mean:/.test(response.data) ||
+        /Sorry, there are no results for/.test(response.data)) {
         result = Object.assign(result, {
           explanation: explanations.notFound,
           notFound: true
