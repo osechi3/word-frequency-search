@@ -1,7 +1,7 @@
 import axios from 'axios'
 import $ from 'cheerio'
 
-export default function getFrequencyMacmillan (word, english = 'american') {
+export default function getFrequencyMacmillan (word, english = 'british') {
   const url = `https://www.macmillandictionary.com/dictionary/${english}/${word}`
   return axios.get(url, { cors: true })
     .then(response => {
