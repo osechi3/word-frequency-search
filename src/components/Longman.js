@@ -31,7 +31,7 @@ export default function getFrequencyLongman (word) {
 const explanations = {
   notFound: 'The word is NOT found.',
   star0: 'The word is NOT included into 9000 most important words to learn.',
-  star1: 'Among 9000 of the most important words to learn.',
-  star2: 'Among 6000 of the most important words to learn.',
-  star3: 'Among 3000 of the most important words to learn.'
+  star1: 'Among 9,000 of the most important words to learn.',
+  star2: 'Among 6,000 of the most important words to learn.',
+  star3: 'Among 3,000 of the most important words to learn.'
 }

@@ -30,7 +30,7 @@ export default function getFrequencyMacmillan (word, english = 'american') {
 const explanations = {
   notFound: 'The word is NOT found.',
   star0: 'The word is NOT included into 7500 most common words.',
-  star1: 'Among 7500 of the most common words.',
-  star2: 'Among 5000 of the most common words.',
-  star3: 'Among 2500 of the most common words.'
+  star1: 'Among 7,500 of the most common words.',
+  star2: 'Among 5,000 of the most common words.',
+  star3: 'Among 2,500 of the most common words.'
 }
