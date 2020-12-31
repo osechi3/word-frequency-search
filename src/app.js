@@ -68,11 +68,12 @@ class App {
       entryExplanation.textContent = frequency.explanation
 
       const wordLink = entry.querySelector('.entry__dictionary-link')
+      wordLink.href = frequency.url
+      wordLink.textContent = frequency.word
 
       if (frequency.notFound) {
         const entryFrequency = entry.querySelector('.entry__frequency')
         entryFrequency.classList.add('entry__frequency_not-found')
-        wordLink.classList.add('entry__dictionary-link_not-found')
         return
       }
 
@@ -82,9 +83,6 @@ class App {
           icon.classList.add('entry__frequency-icon_toggled')
         }
       })
-
-      wordLink.href = frequency.url
-      wordLink.textContent = frequency.word
     })
   }
 
@@ -99,9 +97,6 @@ class App {
 
       const entryFrequency = entry.querySelector('.entry__frequency')
       entryFrequency.classList.remove('entry__frequency_not-found')
-
-      const wordLink = entry.querySelector('.entry__dictionary-link')
-      wordLink.classList.remove('entry__dictionary-link_not-found')
     })
   }
 }
