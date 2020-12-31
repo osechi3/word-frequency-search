@@ -32,9 +32,10 @@ class App {
   }
 
   async search () {
-    const collins = await getFrequencyCollins(this.searchInput.value)
-    const macmillan = await getFrequencyMacmillan(this.searchInput.value)
-    const longman = await getFrequencyLongman(this.searchInput.value)
+    const userInput = this.prepareUserInput(this.searchInput.value)
+    const collins = await getFrequencyCollins(userInput)
+    const macmillan = await getFrequencyMacmillan(userInput)
+    const longman = await getFrequencyLongman(userInput)
 
     getFrequencyCambridge(this.searchInput.value)
     this.searchInput.value = ''
@@ -45,6 +46,13 @@ class App {
       longman
       // cambridge: ''
     ])
+  }
+
+  prepareUserInput (input) {
+    return input
+      .trim()
+      .replace(/[0-9!@#$%^&*)(+=.,_-]/g, '')
+      .replace(/ /g, '-')
   }
 
   searchWithEnter (e) {
